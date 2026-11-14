@@ -155,7 +155,7 @@ activityRoutes.get("/activity", requirePermission("stock:view"), async (c) => {
                   <Td class="whitespace-nowrap">{formatWhen(a.occurredAt, region)}</Td>
                   <Td>{movementLabel[a.type]}</Td>
                   <Td>
-                    <a class="text-primary underline-offset-2 hover:underline" href={`/items/${a.itemId}`}>
+                    <a class="tap text-primary underline-offset-2 hover:underline" href={`/items/${a.itemId}`}>
                       {a.itemName}
                     </a>
                   </Td>

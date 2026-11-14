@@ -1,6 +1,6 @@
 {
   "name": "binwright-lite",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Binwright Lite: free, open-source stock and inventory for small businesses, on Cloudflare Workers.",
   "license": "MIT",
   "private": true,
@@ -22,7 +22,7 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:e2e": "npm run build:css && playwright test --project=setup --project=desktop --project=phone-390",
+    "test:e2e": "npm run build:css && playwright test --project=setup --project=desktop --project=phone-390 --project=phone-375",
     "screenshots": "npm run build:css && playwright test --project=setup --project=screenshots",
     "check": "npm run typecheck && npm run lint && npm run test"
   },

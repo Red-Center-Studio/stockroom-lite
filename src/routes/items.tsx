@@ -94,7 +94,7 @@ itemRoutes.get("/items", requirePermission("stock:view"), async (c) => {
             type="search"
             value={search}
             placeholder="Name or code"
-            class="block w-full rounded-xl border border-gray-400 bg-white px-3 py-3 text-base"
+            class="block w-full rounded-xl border border-gray-500 bg-white px-3 py-3 text-base"
           />
         </div>
         <button type="submit" class={btn("primary")}>
@@ -121,7 +121,10 @@ itemRoutes.get("/items", requirePermission("stock:view"), async (c) => {
                 return (
                   <tr>
                     <Td>
-                      <a class="font-semibold text-primary underline-offset-2 hover:underline" href={`/items/${i.id}`}>
+                      <a
+                        class="tap font-semibold text-primary underline-offset-2 hover:underline"
+                        href={`/items/${i.id}`}
+                      >
                         {i.name}
                       </a>
                       {i.sku ? <span class="block text-xs text-gray-700">{i.sku}</span> : null}
@@ -144,7 +147,7 @@ itemRoutes.get("/items", requirePermission("stock:view"), async (c) => {
         </Card>
       )}
       <p class="mt-4 text-sm">
-        <a class="text-primary underline" href={showArchived ? "/items" : "/items?archived=1"}>
+        <a class="tap text-primary underline" href={showArchived ? "/items" : "/items?archived=1"}>
           {showArchived ? "Show current items" : "Show archived items"}
         </a>
       </p>
@@ -365,7 +368,7 @@ async function itemPage(c: Context<AppEnv>, error?: string, status: 200 | 400 = 
                 <div class="flex flex-wrap items-start justify-between gap-2">
                   <div>
                     <a
-                      class="font-semibold text-primary underline-offset-2 hover:underline"
+                      class="tap font-semibold text-primary underline-offset-2 hover:underline"
                       href={`/locations/${l.locationId}`}
                     >
                       {l.locationName}
@@ -498,7 +501,7 @@ async function itemPage(c: Context<AppEnv>, error?: string, status: 200 | 400 = 
             </ul>
           )}
           <p class="mt-3">
-            <a class="text-primary underline" href={`/activity?item=${it.id}`}>
+            <a class="tap text-primary underline" href={`/activity?item=${it.id}`}>
               All activity for this item
             </a>
           </p>

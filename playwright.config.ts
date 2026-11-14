@@ -4,7 +4,7 @@ const PORT = process.env.E2E_PORT ?? "8791";
 const baseURL = `http://127.0.0.1:${PORT}`;
 
 // End-to-end tests drive a real browser against `wrangler dev` with a fresh local database and the demo data.
-// They run once at desktop width and once at a 390px phone width. Uses the installed Microsoft Edge or Chrome;
+// They run once at desktop width and at 390px and 375px phone widths. Uses the installed Microsoft Edge or Chrome;
 // set E2E_BROWSER=chromium to use Playwright's own browser instead (run `npx playwright install chromium` first).
 const channel = process.env.E2E_BROWSER === "chromium" ? undefined : (process.env.E2E_BROWSER ?? "msedge");
 
@@ -33,6 +33,12 @@ export default defineConfig({
       dependencies: ["desktop"],
       testIgnore: /screenshots\.spec\.ts/,
       use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, ...(channel ? { channel } : {}) },
+    },
+    {
+      name: "phone-375",
+      dependencies: ["phone-390"],
+      testMatch: /(mobile|flows)\.spec\.ts/,
+      use: { viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true, ...(channel ? { channel } : {}) },
     },
     // Screenshots for the README and the product page: npm run screenshots
     {

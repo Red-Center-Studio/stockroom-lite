@@ -103,11 +103,11 @@ stockRoutes.get("/stock", requirePermission("stock:view"), async (c) => {
           {all.length === 0 && !f.search && !f.locationId ? (
             <>
               No stock yet.{" "}
-              <a class="text-primary underline" href="/items/new">
+              <a class="tap text-primary underline" href="/items/new">
                 Add an item
               </a>{" "}
               and set where it is kept, or{" "}
-              <a class="text-primary underline" href="/record?type=receive">
+              <a class="tap text-primary underline" href="/record?type=receive">
                 receive a delivery
               </a>
               .
@@ -134,7 +134,7 @@ stockRoutes.get("/stock", requirePermission("stock:view"), async (c) => {
                 <tr>
                   <Td>
                     <a
-                      class="font-semibold text-primary underline-offset-2 hover:underline"
+                      class="tap font-semibold text-primary underline-offset-2 hover:underline"
                       href={`/items/${l.itemId}`}
                     >
                       {l.itemName}
@@ -142,7 +142,7 @@ stockRoutes.get("/stock", requirePermission("stock:view"), async (c) => {
                     {l.sku ? <span class="block text-xs text-gray-700">{l.sku}</span> : null}
                   </Td>
                   <Td>
-                    <a class="underline-offset-2 hover:underline" href={`/locations/${l.locationId}`}>
+                    <a class="tap underline-offset-2 hover:underline" href={`/locations/${l.locationId}`}>
                       {l.locationName}
                     </a>
                   </Td>

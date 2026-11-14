@@ -21,6 +21,18 @@ for (const [name, path] of desktop) {
   });
 }
 
+// Home screen at ad and social sizes (landscape 1200x628 and square 1200x1200).
+for (const [w, h] of [
+  [1200, 628],
+  [1200, 1200],
+] as const) {
+  test(`home ${w}x${h}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: h });
+    await page.goto("/dashboard");
+    await page.screenshot({ path: `${DIR}/binwright-lite-home-${w}x${h}.jpg`, type: "jpeg", quality: 90 });
+  });
+}
+
 test("desktop item page", async ({ page }) => {
   await page.setViewportSize({ width: 1200, height: 860 });
   await page.goto("/items?q=gloves");

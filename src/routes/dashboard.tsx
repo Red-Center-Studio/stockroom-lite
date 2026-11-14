@@ -51,19 +51,19 @@ dashboardRoutes.get("/dashboard", requirePermission("stock:view"), async (c) => 
           <ol class="list-decimal space-y-2 pl-5">
             <li>
               Add the places you keep stock: a van, a storeroom, a shelf.{" "}
-              <a class="text-primary underline" href="/locations/new">
+              <a class="tap text-primary underline" href="/locations/new">
                 Add a place
               </a>
             </li>
             <li>
               Add your items, with a reorder point at each place.{" "}
-              <a class="text-primary underline" href="/items/new">
+              <a class="tap text-primary underline" href="/items/new">
                 Add an item
               </a>
             </li>
             <li>
               Count what you have now.{" "}
-              <a class="text-primary underline" href="/count">
+              <a class="tap text-primary underline" href="/count">
                 Start a count
               </a>
             </li>
@@ -92,7 +92,7 @@ dashboardRoutes.get("/dashboard", requirePermission("stock:view"), async (c) => 
                   <li class="flex flex-wrap items-center justify-between gap-2 py-2.5">
                     <div class="min-w-0">
                       <a
-                        class="font-semibold text-primary underline-offset-2 hover:underline"
+                        class="tap font-semibold text-primary underline-offset-2 hover:underline"
                         href={`/items/${l.itemId}`}
                       >
                         {l.itemName}
@@ -112,7 +112,7 @@ dashboardRoutes.get("/dashboard", requirePermission("stock:view"), async (c) => 
           )}
           {attention.length > 10 ? (
             <p class="mt-3">
-              <a class="text-primary underline" href="/stock?status=low">
+              <a class="tap text-primary underline" href="/stock?status=low">
                 See all {attention.length}
               </a>
             </p>
@@ -121,14 +121,14 @@ dashboardRoutes.get("/dashboard", requirePermission("stock:view"), async (c) => 
         {showCost ? (
           <Card label="Stock value">
             <H2>Stock value</H2>
-            <p class="text-3xl font-bold tabular-nums text-navy">{formatMoney(s.value, region)}</p>
+            <p class="text-3xl font-bold tabular-nums text-brand">{formatMoney(s.value, region)}</p>
             <p class="mt-1 text-sm text-gray-700">On hand across every place, at the latest unit cost.</p>
           </Card>
         ) : (
           <Card label="Quick links">
             <H2>Quick links</H2>
             <p>
-              <a class="text-primary underline" href="/count">
+              <a class="tap text-primary underline" href="/count">
                 Count stock
               </a>
             </p>
@@ -155,7 +155,7 @@ dashboardRoutes.get("/dashboard", requirePermission("stock:view"), async (c) => 
           </ul>
         )}
         <p class="mt-3">
-          <a class="text-primary underline" href="/activity">
+          <a class="tap text-primary underline" href="/activity">
             All activity
           </a>
         </p>

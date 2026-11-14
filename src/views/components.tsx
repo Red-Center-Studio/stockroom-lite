@@ -6,10 +6,10 @@ export const Csrf: FC<{ token: string }> = ({ token }) => <input type="hidden" n
 
 /** Page title banner. `action` is an optional button shown on the right, such as "Add item". */
 export const H1: FC<{ children?: Child; sub?: string | undefined; action?: Child }> = ({ children, sub, action }) => (
-  <div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-navy-800 px-5 py-4 text-white shadow-md">
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-brand-800 px-5 py-4 text-white shadow-md">
     <div class="min-w-0">
       <h1 class="text-2xl font-bold tracking-tight">{children}</h1>
-      {sub ? <p class="mt-1 text-navy-200">{sub}</p> : null}
+      {sub ? <p class="mt-1 text-brand-200">{sub}</p> : null}
     </div>
     {action ? <div class="flex flex-wrap gap-2">{action}</div> : null}
   </div>
@@ -19,14 +19,14 @@ export const Card: FC<{ children?: Child; class?: string; id?: string; label?: s
   <section
     id={props.id}
     aria-label={props.label}
-    class={`rounded-2xl border border-line bg-white p-4 shadow-md shadow-navy/5 sm:p-5 ${props.class ?? ""}`}
+    class={`rounded-2xl border border-line bg-white p-4 shadow-md shadow-brand/5 sm:p-5 ${props.class ?? ""}`}
   >
     {props.children}
   </section>
 );
 
 export const H2: FC<{ children?: Child; id?: string }> = ({ children, id }) => (
-  <h2 id={id} class="mb-3 border-l-4 border-accent pl-3 text-lg font-bold text-navy">
+  <h2 id={id} class="mb-3 border-l-4 border-primary pl-3 text-lg font-bold text-brand">
     {children}
   </h2>
 );
@@ -50,7 +50,7 @@ export const Alert: FC<{ tone?: Tone; children?: Child; id?: string }> = ({ tone
 );
 
 const inputClass =
-  "block w-full rounded-xl border border-gray-400 bg-white px-3 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary-200";
+  "block w-full rounded-xl border border-gray-500 bg-white px-3 py-3 text-base focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary";
 
 interface FieldProps {
   label: string;
@@ -206,15 +206,17 @@ export const Checkbox: FC<{ label: string; name: string; checked?: boolean; hint
   const id = p.id ?? `f-${p.name}`;
   return (
     <div class="mb-4 flex items-start gap-3">
-      <input
-        id={id}
-        type="checkbox"
-        name={p.name}
-        value="1"
-        checked={p.checked}
-        aria-describedby={p.hint ? `${id}-hint` : undefined}
-        class="mt-0.5 size-6 shrink-0 rounded border-gray-400 accent-primary"
-      />
+      <label class="-m-2.5 flex size-11 shrink-0 items-center justify-center">
+        <input
+          id={id}
+          type="checkbox"
+          name={p.name}
+          value="1"
+          checked={p.checked}
+          aria-describedby={p.hint ? `${id}-hint` : undefined}
+          class="size-6 accent-primary"
+        />
+      </label>
       <div>
         <label for={id} class="font-medium">
           {p.label}
@@ -232,14 +234,14 @@ export const Checkbox: FC<{ label: string; name: string; checked?: boolean; hint
 type ButtonKind = "primary" | "secondary" | "danger" | "ghost" | "accent";
 const buttonClass: Record<ButtonKind, string> = {
   primary: "bg-primary text-white hover:bg-primary-dark",
-  secondary: "border border-gray-400 bg-white text-ink hover:bg-gray-50",
+  secondary: "border border-gray-500 bg-white text-ink hover:bg-gray-50",
   danger: "border border-danger-200 bg-white text-danger hover:bg-danger-50",
   ghost: "text-primary underline-offset-2 hover:bg-primary-50 hover:underline",
-  accent: "bg-accent text-navy hover:bg-accent-dark",
+  accent: "bg-primary text-white shadow-md hover:bg-primary-dark",
 };
 
 export const btn = (kind: ButtonKind = "primary", extra = "") =>
-  `inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200 disabled:opacity-60 ${buttonClass[kind]} ${extra}`;
+  `inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60 ${buttonClass[kind]} ${extra}`;
 
 export const Button: FC<{
   kind?: ButtonKind;
@@ -303,13 +305,15 @@ export const Stat: FC<{
   href: string;
   tone?: "danger" | "warn" | "info" | "plain";
 }> = ({ label, value, href, tone = "plain" }) => {
-  const bar = { danger: "border-danger", warn: "border-accent", info: "border-primary", plain: "border-line" }[tone];
+  const bar = { danger: "border-l-danger", warn: "border-l-warn", info: "border-l-primary", plain: "border-l-line" }[
+    tone
+  ];
   return (
     <a
       href={href}
-      class={`block rounded-2xl border border-line border-l-8 ${bar} bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200`}
+      class={`block rounded-2xl border border-line border-l-8 ${bar} bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2`}
     >
-      <span class="block text-3xl font-bold tabular-nums text-navy">{value}</span>
+      <span class="block text-3xl font-bold tabular-nums text-brand">{value}</span>
       <span class="mt-1 block text-sm font-medium text-gray-700">{label}</span>
     </a>
   );

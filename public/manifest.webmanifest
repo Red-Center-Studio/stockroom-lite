@@ -4,7 +4,7 @@
   "description": "Stock and inventory for every place you keep it.",
   "start_url": "/dashboard",
   "display": "standalone",
-  "background_color": "#e4ebe9",
-  "theme_color": "#0e2a26",
+  "background_color": "#f4f6f8",
+  "theme_color": "#1e293b",
   "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

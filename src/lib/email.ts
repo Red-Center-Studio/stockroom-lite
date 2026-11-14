@@ -24,14 +24,14 @@ export function senderName(businessName: string | null | undefined): string {
 
 /** A link styled as a large button, for the main action in an email. */
 export function emailButton(url: string, label: string): string {
-  return `<p style="margin:20px 0"><a href="${escapeHtml(url)}" style="display:inline-block;background:#0f5c4d;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:10px">${escapeHtml(label)}</a></p>`;
+  return `<p style="margin:20px 0"><a href="${escapeHtml(url)}" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:10px">${escapeHtml(label)}</a></p>`;
 }
 
 /** Wraps an email body in a plain layout that reads well on a phone: one column, large text, no images. */
 export function wrapHtml(inner: string, businessName: string): string {
   return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#eef1f6">
-<div style="max-width:560px;margin:0 auto;padding:24px 16px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a">
+<body style="margin:0;padding:0;background:#f4f6f8">
+<div style="max-width:560px;margin:0 auto;padding:24px 16px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;color:#0f172a">
 <div style="background:#ffffff;border-radius:12px;padding:24px">${inner}</div>
 <p style="margin:16px 4px 0;font-size:13px;color:#555">${escapeHtml(senderName(businessName))}, sent by Binwright</p>
 </div></body></html>`;

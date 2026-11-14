@@ -46,7 +46,7 @@ export const Page: FC<PageProps> = ({ title, user, active, businessName, placesL
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#0e2a26" />
+        <meta name="theme-color" content="#1e293b" />
         <meta name="robots" content="noindex" />
         <title>{`${title} | ${businessName || APP_NAME}`}</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -62,7 +62,7 @@ export const Page: FC<PageProps> = ({ title, user, active, businessName, placesL
           Skip to content
         </a>
         {demo ? (
-          <div class="bg-accent px-4 py-2 text-center text-sm font-medium text-navy print:hidden">
+          <div class="bg-accent px-4 py-2 text-center text-sm font-medium text-brand print:hidden">
             {APP_NAME} demo. Anything you change is wiped every night.
           </div>
         ) : null}
@@ -90,12 +90,13 @@ const Header: FC<{
   csrf: string;
 }> = ({ user, active, businessName, placesLabel, csrf }) => {
   const links = user && user.role ? NAV(placesLabel).filter((l) => l.show(user)) : [];
+  const current = links.find((l) => l.key === active);
   return (
-    <header class="sticky top-0 z-40 bg-navy text-white shadow-md print:hidden">
+    <header class="sticky top-0 z-40 bg-brand text-white shadow-md print:hidden">
       <div class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
         <a
           href="/"
-          class="flex min-w-0 items-center gap-2 rounded font-semibold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
+          class="flex min-h-11 min-w-0 items-center gap-2 rounded font-semibold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
         >
           <Logo />
           <span class="truncate">{businessName || APP_NAME}</span>
@@ -105,7 +106,7 @@ const Header: FC<{
             <input type="hidden" name={CSRF_FIELD} value={csrf} />
             <button
               type="submit"
-              class="min-h-11 rounded-lg px-3 py-2 text-sm text-navy-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
+              class="min-h-11 rounded-lg px-3 py-2 text-sm text-brand-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
             >
               Sign out
             </button>
@@ -114,23 +115,36 @@ const Header: FC<{
       </div>
       {links.length > 0 ? (
         <nav aria-label="Main" class="mx-auto max-w-5xl">
-          <ul
-            class="flex gap-1 overflow-x-auto px-2 pb-2 [scrollbar-width:thin] max-lg:[mask-image:linear-gradient(to_right,black_85%,transparent)]"
-            data-nav
-          >
+          {/* Phones and tablets: one Menu button that opens every link as large tap targets. No script needed. */}
+          <details class="group px-4 pb-3 lg:hidden" data-nav-menu>
+            <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-lg bg-white/10 px-3 py-2 text-sm font-semibold text-white hover:bg-white/15 focus:outline-none focus-visible:ring-4 focus-visible:ring-accent [&::-webkit-details-marker]:hidden">
+              <span>
+                Menu
+                {current ? <span class="font-normal text-brand-200">: {current.label}</span> : null}
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                class="shrink-0 transition-transform group-open:rotate-180"
+              >
+                <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <ul class="mt-2 grid grid-cols-2 gap-1 sm:grid-cols-3">
+              {links.map((l) => (
+                <li>
+                  <NavA l={l} active={active} />
+                </li>
+              ))}
+            </ul>
+          </details>
+          {/* Wide screens: every link in one row, wrapping if a long place name needs it. */}
+          <ul class="hidden flex-wrap gap-1 px-2 pb-2 lg:flex">
             {links.map((l) => (
-              <li class="shrink-0">
-                <a
-                  href={l.href}
-                  aria-current={active === l.key ? "page" : undefined}
-                  class={
-                    active === l.key
-                      ? "block whitespace-nowrap rounded-lg border-b-2 border-accent bg-white/15 px-3 py-2.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
-                      : "block whitespace-nowrap rounded-lg border-b-2 border-transparent px-3 py-2.5 text-sm text-navy-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
-                  }
-                >
-                  {l.label}
-                </a>
+              <li>
+                <NavA l={l} active={active} />
               </li>
             ))}
           </ul>
@@ -145,11 +159,25 @@ const Header: FC<{
   );
 };
 
+const NavA: FC<{ l: NavLink; active?: NavKey | undefined }> = ({ l, active }) => (
+  <a
+    href={l.href}
+    aria-current={active === l.key ? "page" : undefined}
+    class={
+      active === l.key
+        ? "flex min-h-11 items-center whitespace-nowrap rounded-lg border-b-2 border-accent bg-white/15 px-3 py-2 text-sm font-semibold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
+        : "flex min-h-11 items-center whitespace-nowrap rounded-lg border-b-2 border-transparent px-3 py-2 text-sm text-brand-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
+    }
+  >
+    {l.label}
+  </a>
+);
+
 export const Logo: FC = () => (
   <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" class="shrink-0">
-    <rect width="32" height="32" rx="8" fill="#f2a93b" />
-    <path d="M7 12h18v13H7z" fill="none" stroke="#0e2a26" stroke-width="2.5" stroke-linejoin="round" />
-    <path d="M5.5 8h21v4h-21z" fill="#0e2a26" />
-    <path d="M13 17h6" stroke="#0e2a26" stroke-width="2.5" stroke-linecap="round" />
+    <rect width="32" height="32" rx="8" fill="#2dd4bf" />
+    <path d="M7 12h18v13H7z" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M5.5 8h21v4h-21z" fill="#1e293b" />
+    <path d="M13 17h6" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" />
   </svg>
 );

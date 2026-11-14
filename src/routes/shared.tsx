@@ -44,7 +44,7 @@ export const LevelBar: FC<{ l: Pick<LevelView, "onHand" | "minQty" | "parQty" | 
   const top = Math.max(l.parQty ?? 0, (l.minQty ?? 0) * 2, l.onHand, 1);
   const pct = Math.max(0, Math.min(100, (l.onHand / top) * 100));
   const minPct = l.minQty !== null ? Math.min(100, (l.minQty / top) * 100) : null;
-  const colour = l.status === "out" ? "bg-danger" : l.status === "low" ? "bg-accent" : "bg-success";
+  const colour = l.status === "out" ? "bg-danger" : l.status === "low" ? "bg-warn" : "bg-success";
   // Classes, not inline styles: the Content Security Policy blocks style attributes.
   return (
     <span class="relative mt-1 block h-2 w-full max-w-40 overflow-hidden rounded-full bg-gray-200" aria-hidden="true">

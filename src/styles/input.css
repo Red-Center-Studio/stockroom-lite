@@ -2,36 +2,48 @@
 @source "../";
 @source "../../public/app.js";
 
-/* Binwright colours. Change them here to rebrand. */
+/* Binwright colours (theme tokens). Change them here to rebrand: every page, badge and button follows them.
+   Contrast ratios are listed in CUSTOMISING.md; keep text pairs at 4.5:1 or more and borders at 3:1. */
 @theme {
-  --color-ink: #17201e;
-  /* Deep teal: buttons and links. White text on it passes WCAG AA. */
-  --color-primary: #0f6b58;
-  --color-primary-dark: #0a4f41;
-  --color-primary-50: #f1f8f6;
-  --color-primary-100: #e0f0ec;
-  --color-primary-200: #a8d5ca;
+  --color-ink: #0f172a;
+  /* Teal: buttons, links and focus rings on light pages. White text on it is 5.47:1. */
+  --color-primary: #0f766e;
+  --color-primary-dark: #115e59;
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  /* Red is only for out of stock and errors. */
   --color-danger: #b0200c;
   --color-danger-50: #fef6f5;
   --color-danger-200: #f9b3a9;
   --color-success: #1e6c30;
   --color-success-50: #f5faf6;
   --color-success-200: #b7dcbf;
+  /* Amber is only for low stock and warnings. */
+  --color-warn: #b45309;
   --color-alert-50: #fffaf0;
   --color-alert-100: #fff1d6;
   --color-alert-200: #f7d391;
   --color-alert-700: #7a4d00;
-  /* Darker surfaces: header, title banners and the page background. */
-  --color-navy: #0e2a26;
-  --color-navy-800: #153b35;
-  --color-navy-700: #1d4c44;
-  --color-navy-200: #c3ddd6;
-  --color-canvas: #e4ebe9;
-  --color-line: #c4d2ce;
-  /* Amber accent. */
-  --color-accent: #f2a93b;
-  --color-accent-dark: #d18a1c;
+  /* Dark slate surfaces: the header and page title banners. */
+  --color-brand: #1e293b;
+  --color-brand-800: #334155;
+  --color-brand-200: #cbd5e1;
+  /* Cool light page background and card borders. */
+  --color-canvas: #f4f6f8;
+  --color-line: #cbd5e1;
+  /* Bright teal for highlights and focus rings on the dark slate header. */
+  --color-accent: #2dd4bf;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Phones and tablets: standalone text links and toggles get a 44px tall tap area without changing desktop density. */
+@utility tap {
+  @media (max-width: 1023px) {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
 }
 
 [hidden] {

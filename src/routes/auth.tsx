@@ -37,12 +37,12 @@ authRoutes.get("/", async (c) => {
     c,
     { title: "Stock and inventory" },
     <>
-      <div class="mb-5 rounded-3xl bg-navy px-5 py-7 text-white shadow-lg sm:px-8 sm:py-10">
+      <div class="mb-5 rounded-3xl bg-brand px-5 py-7 text-white shadow-lg sm:px-8 sm:py-10">
         <p class="text-sm font-semibold uppercase tracking-wide text-accent">{settings.businessName}</p>
         <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
           Know what you have, where it is, and when to reorder.
         </h1>
-        <p class="mt-3 text-lg text-navy-200">
+        <p class="mt-3 text-lg text-brand-200">
           Record use, deliveries and counts from a phone in seconds. See what is low at every place before it runs out.
         </p>
       </div>
@@ -119,11 +119,11 @@ const SignInCard = ({
         <Button full>Sign in</Button>
       </form>
       <div class="mt-4 flex flex-wrap justify-between gap-2 text-sm">
-        <a class="text-primary underline" href="/forgot-password">
+        <a class="tap text-primary underline" href="/forgot-password">
           Forgot your password?
         </a>
         {demo ? null : (
-          <a class="text-primary underline" href="/signup">
+          <a class="tap text-primary underline" href="/signup">
             Create an account
           </a>
         )}
@@ -263,7 +263,7 @@ const SignUpForm = ({ c, error, values }: { c: Context<AppEnv>; error?: string; 
           Sign in
         </a>
       </p>
-      <p class="mt-2 text-xs text-gray-500">
+      <p class="mt-2 text-xs text-gray-600">
         By creating an account you agree to the{" "}
         <a class="underline" href="/terms">
           terms
@@ -366,7 +366,7 @@ authRoutes.get("/waiting", requireSignedIn, async (c) => {
         {settings.supportEmail ? (
           <p class="mt-3 text-sm text-gray-600">
             Questions? Email{" "}
-            <a class="text-primary underline" href={`mailto:${settings.supportEmail}`}>
+            <a class="tap text-primary underline" href={`mailto:${settings.supportEmail}`}>
               {settings.supportEmail}
             </a>
             .
@@ -403,7 +403,7 @@ const ForgotForm = ({ c, error, sent }: { c: Context<AppEnv>; error?: string; se
         <Button full>Send reset link</Button>
       </form>
       <p class="mt-4 text-sm">
-        <a class="text-primary underline" href="/login">
+        <a class="tap text-primary underline" href="/login">
           Back to sign in
         </a>
       </p>

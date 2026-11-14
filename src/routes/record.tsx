@@ -80,11 +80,11 @@ async function recordPage(c: Context<AppEnv>, form: RecordForm, status: 200 | 40
           Add at least one item and one place first.{" "}
           {can(user, "catalog:edit") ? (
             <>
-              <a class="text-primary underline" href="/items/new">
+              <a class="tap text-primary underline" href="/items/new">
                 Add an item
               </a>{" "}
               or{" "}
-              <a class="text-primary underline" href="/locations/new">
+              <a class="tap text-primary underline" href="/locations/new">
                 add a place
               </a>
               .
@@ -101,8 +101,14 @@ async function recordPage(c: Context<AppEnv>, form: RecordForm, status: 200 | 40
               <legend class="mb-2 text-sm font-medium">What happened?</legend>
               <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {types.map((t) => (
-                  <label class="flex min-h-12 cursor-pointer items-center gap-2 rounded-xl border border-gray-400 bg-white px-3 py-2 has-[:checked]:border-primary has-[:checked]:bg-primary-50 has-[:checked]:font-semibold has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-primary-200">
-                    <input type="radio" name="type" value={t} checked={form.type === t} class="size-5 accent-primary" />
+                  <label class="flex min-h-12 cursor-pointer items-center gap-2 rounded-xl border border-gray-500 bg-white px-3 py-2 has-[:checked]:border-primary has-[:checked]:bg-primary-50 has-[:checked]:font-semibold has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-primary-200">
+                    <input
+                      type="radio"
+                      name="type"
+                      value={t}
+                      checked={form.type === t}
+                      class="size-5 shrink-0 accent-primary"
+                    />
                     <span>{recordableLabel[t]}</span>
                   </label>
                 ))}
@@ -171,7 +177,7 @@ async function recordPage(c: Context<AppEnv>, form: RecordForm, status: 200 | 40
               hint="Required for an adjustment: say why."
             />
             <details class="mb-4">
-              <summary class="cursor-pointer text-sm font-medium text-primary">It happened earlier</summary>
+              <summary class="tap cursor-pointer text-sm font-medium text-primary">It happened earlier</summary>
               <Field
                 label="When"
                 name="occurredAt"
@@ -262,9 +268,9 @@ recordRoutes.get("/count", requirePermission("stock:count"), async (c) => {
               <li>
                 <a
                   href={`/count/${l.id}`}
-                  class="block rounded-2xl border border-line bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200"
+                  class="block rounded-2xl border border-line bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  <span class="block font-semibold text-navy">{placePath(l, lists.locations)}</span>
+                  <span class="block font-semibold text-brand">{placePath(l, lists.locations)}</span>
                   <span class="mt-1 block text-sm text-gray-700">
                     {s ? `${s.n} item${s.n === 1 ? "" : "s"}. ` : "No items yet. "}
                     {s?.last ? `Oldest count ${formatWhen(s.last, region)}.` : s ? "Not counted yet." : ""}
@@ -313,11 +319,11 @@ async function countPage(c: Context<AppEnv>, error?: string, status: 200 | 400 =
       {error ? <Alert tone="error">{error}</Alert> : null}
       <p class="mb-4 text-sm">
         {blind ? (
-          <a class="text-primary underline" href={`/count/${loc.id}`}>
+          <a class="tap text-primary underline" href={`/count/${loc.id}`}>
             Show the expected numbers
           </a>
         ) : (
-          <a class="text-primary underline" href={`/count/${loc.id}?blind=1`}>
+          <a class="tap text-primary underline" href={`/count/${loc.id}?blind=1`}>
             Hide the expected numbers (blind count, more accurate)
           </a>
         )}
@@ -351,7 +357,7 @@ async function countPage(c: Context<AppEnv>, error?: string, status: 200 | 400 =
                       inputmode="decimal"
                       autocomplete="off"
                       aria-describedby={`count-${i}-hint`}
-                      class="block w-full rounded-xl border border-gray-400 bg-white px-3 py-3 text-right text-base tabular-nums focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary-200"
+                      class="block w-full rounded-xl border border-gray-500 bg-white px-3 py-3 text-right text-base tabular-nums focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </li>

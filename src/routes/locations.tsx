@@ -84,9 +84,9 @@ locationRoutes.get("/locations", requirePermission("stock:view"), async (c) => {
                 <li>
                   <a
                     href={`/locations/${l.id}`}
-                    class="block h-full rounded-2xl border border-line bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200"
+                    class="block h-full rounded-2xl border border-line bg-white p-4 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
-                    <span class="block font-semibold text-navy">{path}</span>
+                    <span class="block font-semibold text-brand">{path}</span>
                     <span class="block text-sm text-gray-700">{locationKindLabel[l.kind]}</span>
                     <span class="mt-2 block text-sm">
                       {s ? `${s.items} item${s.items === 1 ? "" : "s"}` : "No items"}
@@ -102,7 +102,7 @@ locationRoutes.get("/locations", requirePermission("stock:view"), async (c) => {
         </ul>
       )}
       <p class="mt-4 text-sm">
-        <a class="text-primary underline" href={showArchived ? "/locations" : "/locations?archived=1"}>
+        <a class="tap text-primary underline" href={showArchived ? "/locations" : "/locations?archived=1"}>
           {showArchived ? "Show current" : "Show archived"}
         </a>
       </p>
@@ -263,7 +263,7 @@ locationRoutes.get("/locations/:id", requirePermission("stock:view"), async (c) 
           {children.map((ch, i) => (
             <>
               {i > 0 ? ", " : ""}
-              <a class="text-primary underline" href={`/locations/${ch.id}`}>
+              <a class="tap text-primary underline" href={`/locations/${ch.id}`}>
                 {ch.name}
               </a>
             </>
@@ -273,11 +273,11 @@ locationRoutes.get("/locations/:id", requirePermission("stock:view"), async (c) 
       {levels.length === 0 ? (
         <Empty>
           Nothing kept here yet.{" "}
-          <a class="text-primary underline" href={`/record?type=receive&location=${loc.id}`}>
+          <a class="tap text-primary underline" href={`/record?type=receive&location=${loc.id}`}>
             Receive stock
           </a>{" "}
           or{" "}
-          <a class="text-primary underline" href={`/count/${loc.id}`}>
+          <a class="tap text-primary underline" href={`/count/${loc.id}`}>
             count what is here
           </a>
           .
@@ -299,7 +299,7 @@ locationRoutes.get("/locations/:id", requirePermission("stock:view"), async (c) 
                 <tr>
                   <Td>
                     <a
-                      class="font-semibold text-primary underline-offset-2 hover:underline"
+                      class="tap font-semibold text-primary underline-offset-2 hover:underline"
                       href={`/items/${l.itemId}`}
                     >
                       {l.itemName}
