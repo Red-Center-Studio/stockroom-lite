@@ -9,8 +9,8 @@ mkdirSync(DIR, { recursive: true });
 test.use({ storageState: ".e2e-state/manager.json" });
 
 const desktop = [
-  ["binwright-lite-dashboard", "/dashboard"],
-  ["binwright-lite-stock", "/stock"],
+  ["stockroom-lite-dashboard", "/dashboard"],
+  ["stockroom-lite-stock", "/stock"],
 ] as const;
 
 for (const [name, path] of desktop) {
@@ -29,7 +29,7 @@ for (const [w, h] of [
   test(`home ${w}x${h}`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: h });
     await page.goto("/dashboard");
-    await page.screenshot({ path: `${DIR}/binwright-lite-home-${w}x${h}.jpg`, type: "jpeg", quality: 90 });
+    await page.screenshot({ path: `${DIR}/stockroom-lite-home-${w}x${h}.jpg`, type: "jpeg", quality: 90 });
   });
 }
 
@@ -37,7 +37,7 @@ test("desktop item page", async ({ page }) => {
   await page.setViewportSize({ width: 1200, height: 860 });
   await page.goto("/items?q=gloves");
   await page.locator("table a").first().click();
-  await page.screenshot({ path: `${DIR}/binwright-lite-item.jpg`, type: "jpeg", quality: 88 });
+  await page.screenshot({ path: `${DIR}/stockroom-lite-item.jpg`, type: "jpeg", quality: 88 });
 });
 
 test.describe("phone", () => {
@@ -48,11 +48,11 @@ test.describe("phone", () => {
     await page.getByLabel("Item").selectOption({ label: "Nitrile gloves (M) (GLV-M)" });
     await page.getByLabel("Location").selectOption({ label: "Van 2 (Marco)" });
     await page.getByLabel("Quantity").fill("1");
-    await page.screenshot({ path: `${DIR}/binwright-lite-record-mobile.jpg`, type: "jpeg", quality: 88 });
+    await page.screenshot({ path: `${DIR}/stockroom-lite-record-mobile.jpg`, type: "jpeg", quality: 88 });
   });
 
   test("home on a phone", async ({ page }) => {
     await page.goto("/dashboard");
-    await page.screenshot({ path: `${DIR}/binwright-lite-dashboard-mobile.jpg`, type: "jpeg", quality: 88 });
+    await page.screenshot({ path: `${DIR}/stockroom-lite-dashboard-mobile.jpg`, type: "jpeg", quality: 88 });
   });
 });

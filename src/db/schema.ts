@@ -105,7 +105,7 @@ export const appSettings = sqliteTable("app_settings", {
   id: integer("id").primaryKey(),
   businessName: text("business_name").notNull().default("My Business"),
   supportEmail: text("support_email").notNull().default(""),
-  setupHelpUrl: text("setup_help_url").notNull().default("https://redcenterstudio.com/binwright/"),
+  setupHelpUrl: text("setup_help_url").notNull().default("https://redcenterstudio.com/stockroom/"),
   showSetupOffer: integer("show_setup_offer", { mode: "boolean" }).notNull().default(true),
   // ISO 4217 code such as USD, AUD, GBP, EUR or JPY. Costs are shown in this currency.
   currency: text("currency").notNull().default("USD"),

@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  // The Worker's name. It becomes part of your free address: https://binwright-lite.<your-subdomain>.workers.dev
-  "name": "binwright-lite",
+  // The Worker's name. It becomes part of your free address: https://stockroom-lite.<your-subdomain>.workers.dev
+  "name": "stockroom-lite",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -16,7 +16,7 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "binwright-lite",
+      "database_name": "stockroom-lite",
       "migrations_dir": "migrations",
     },
   ],

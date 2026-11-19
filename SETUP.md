@@ -1,20 +1,20 @@
-# Setting up Binwright Lite
+# Setting up StockRoom Lite
 
-This guide takes you from the downloaded code to your own live Binwright Lite, step by step. You do not need to be a
+This guide takes you from the downloaded code to your own live StockRoom Lite, step by step. You do not need to be a
 developer. Each command is explained in plain words. Expect it to take about 20 minutes the first time.
 
 Everything runs in **your own Cloudflare account**. Cloudflare's free plan covers a typical small business; check
 their current pricing for your size.
 
-Would rather not do it yourself? The Turnkey Setup installs Binwright for you, with your items, places and team
-loaded: see [redcenterstudio.com/binwright](https://redcenterstudio.com/binwright/).
+Would rather not do it yourself? The Turnkey Setup installs StockRoom for you, with your items, places and team
+loaded: see [redcenterstudio.com/stockroom](https://redcenterstudio.com/stockroom/).
 
 ## The quickest way: the Deploy to Cloudflare button
 
 If you have a Cloudflare account and a GitHub account, you can skip most of this guide:
 
 1. Click **Deploy to Cloudflare** at the top of the README.
-2. Sign in to Cloudflare and connect GitHub when asked. Cloudflare copies Binwright Lite into a new repository in your
+2. Sign in to Cloudflare and connect GitHub when asked. Cloudflare copies StockRoom Lite into a new repository in your
    GitHub account and creates the database for you.
 3. When it asks for **AUTH_SECRET**, paste a long random string of at least 32 characters (see Step 4 below for a
    one-line way to make one). Do not keep the example value: the app refuses to start with it.
@@ -29,10 +29,10 @@ gives you a copy on your own computer as well.
 1. **A Cloudflare account.** Free. Sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up).
 2. **Node.js 22.18 or newer.** This runs the setup tools on your computer. Download the "LTS" version from
    [nodejs.org](https://nodejs.org) and install it with the default options.
-3. **The Binwright Lite code** in a folder on your computer. On the GitHub page, click the green **Code** button, then
+3. **The StockRoom Lite code** in a folder on your computer. On the GitHub page, click the green **Code** button, then
    **Download ZIP**, and unzip it. Or clone it with `git clone`.
 
-To run the commands below, open a terminal in the Binwright Lite folder:
+To run the commands below, open a terminal in the StockRoom Lite folder:
 
 - **Windows:** open the folder in File Explorer, click the address bar, type `powershell` and press Enter.
 - **Mac:** right-click the folder in Finder and choose "New Terminal at Folder".
@@ -43,7 +43,7 @@ To run the commands below, open a terminal in the Binwright Lite folder:
 npm install
 ```
 
-This downloads the libraries Binwright Lite uses into a `node_modules` folder. It takes a minute or two. You only do
+This downloads the libraries StockRoom Lite uses into a `node_modules` folder. It takes a minute or two. You only do
 it once (and again after you update the code).
 
 ## Step 2: Try it on your computer (optional)
@@ -61,7 +61,7 @@ Open [http://localhost:8787](http://localhost:8787). Create an account: the **fi
 Press `Ctrl + C` in the terminal to stop it.
 
 Want sample data to click around? Run `npm run seed:local` (this wipes your local test database first). Then sign in
-with `admin@demo.binwright.example` and the password `binwright-lite-demo`.
+with `admin@demo.stockroom.example` and the password `stockroom-lite-demo`.
 
 ## Step 3: Sign in to Cloudflare
 
@@ -99,7 +99,7 @@ npx wrangler deploy
 ```
 
 This uploads the app and creates its database in your account. Wrangler may ask you to confirm the new database;
-answer yes. It prints your address, like `https://binwright-lite.your-name.workers.dev`. Do not open it yet: the
+answer yes. It prints your address, like `https://stockroom-lite.your-name.workers.dev`. Do not open it yet: the
 database is still empty.
 
 Then run:
@@ -136,7 +136,7 @@ From then on, people record what they use and what arrives, and the home page sh
 
 ## Optional: use your own web address
 
-In the Cloudflare dashboard, open **Workers & Pages**, click **binwright-lite**, then **Settings**, then **Domains &
+In the Cloudflare dashboard, open **Workers & Pages**, click **stockroom-lite**, then **Settings**, then **Domains &
 Routes**, then **Add**, then **Custom domain**. Enter something like `stock.yourbusiness.com`. Your domain must be on
 Cloudflare.
 
@@ -168,7 +168,7 @@ You need a domain on Cloudflare (for example `yourbusiness.com`).
 
 5. **Test it.** Use **Forgot your password?** on the sign-in page with your own address. The email should arrive
    within a minute. If it never arrives, look for `email_failed` in the Worker logs (Cloudflare dashboard, Workers &
-   Pages, binwright-lite, Logs).
+   Pages, stockroom-lite, Logs).
 
 There are no API keys for email: the `send_email` binding uses your Cloudflare account directly.
 
@@ -201,7 +201,7 @@ Cloudflare D1 keeps 30 days of point-in-time history automatically. To restore, 
 [Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/). To export a copy:
 
 ```bash
-npx wrangler d1 export DB --remote --output=binwright-lite-backup.sql
+npx wrangler d1 export DB --remote --output=stockroom-lite-backup.sql
 ```
 
 The Setup page also has CSV downloads of all stock and all activity.
@@ -209,7 +209,7 @@ The Setup page also has CSV downloads of all stock and all activity.
 ## Something not working?
 
 - **"Please sign in" loops, or "This form has expired":** make sure `AUTH_SECRET` is set (Step 4) and refresh.
-- **See what went wrong:** Cloudflare dashboard, then **Workers & Pages**, then **binwright-lite**, then **Logs**.
+- **See what went wrong:** Cloudflare dashboard, then **Workers & Pages**, then **stockroom-lite**, then **Logs**.
 - **Run the tests:** `npm test` checks the stock rules and permissions on your computer.
 
 ## Demo mode (for showing it off, not for real stock)

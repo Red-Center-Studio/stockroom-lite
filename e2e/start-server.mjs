@@ -1,4 +1,4 @@
-// Starts a fresh local Binwright Lite for the end-to-end tests: empty database, migrations, demo data, then wrangler dev.
+// Starts a fresh local StockRoom Lite for the end-to-end tests: empty database, migrations, demo data, then wrangler dev.
 import { execSync, spawn } from "node:child_process";
 import { rmSync } from "node:fs";
 

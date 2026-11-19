@@ -4,7 +4,7 @@
  */
 import type { LocationKind, MovementType } from "./db/schema";
 
-export const APP_NAME = "Binwright";
+export const APP_NAME = "StockRoom";
 
 export const ROLES = ["admin", "manager", "staff"] as const;
 export type Role = (typeof ROLES)[number];

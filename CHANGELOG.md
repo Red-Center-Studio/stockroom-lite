@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.2.0 (2026-11-19)
+
+**Renamed from Binwright Lite to StockRoom Lite.** Nothing else about how the app works has changed.
+
+**Before you update:** this release adds one small database migration (`migrations/0001_stockroom_name.sql`). It only
+points the default "ask about setup" link at the new page, and only if you have not set your own. `npm run deploy`
+applies it for you and never deletes data.
+
+- The name appears everywhere you see it: pages, titles, emails, the phone home screen name, labels, CSV file names
+  and the documentation.
+- New installs create a Worker and database named `stockroom-lite`. Existing installs keep the names they already
+  have.
+- **Everyone signs in once more after this update.** The sign-in cookie is now named after StockRoom, so existing
+  sessions end. No data is lost.
+
 ## 1.1.0 (2026-11-15)
 
 - New look, matching Binwright: dark slate header, teal buttons and links, a cool light background. Red is kept for

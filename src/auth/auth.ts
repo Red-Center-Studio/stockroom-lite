@@ -60,7 +60,7 @@ export function createAuth(env: Bindings, origin: string) {
   const baseURL = appOrigin(env, origin);
   const requireVerification = isOn(env.REQUIRE_EMAIL_VERIFICATION);
   return betterAuth({
-    appName: "Binwright",
+    appName: "StockRoom",
     baseURL,
     basePath: "/api/auth",
     secret: env.AUTH_SECRET,
@@ -71,7 +71,7 @@ export function createAuth(env: Bindings, origin: string) {
     }),
     advanced: {
       database: { generateId: () => crypto.randomUUID() },
-      cookiePrefix: "binwright",
+      cookiePrefix: "stockroom",
     },
     session: {
       expiresIn: 60 * 60 * 24 * 30,
@@ -124,12 +124,12 @@ export function createAuth(env: Bindings, origin: string) {
 
 export type Auth = ReturnType<typeof createAuth>;
 
-/** Where the account lives, in words: "Acme's Binwright (stock.acme.com)", or "Binwright (...)" with no name set. */
-const place = (name: string, host: string) => `${name === "Binwright" ? "Binwright" : `${name}'s Binwright`} (${host})`;
+/** Where the account lives, in words: "Acme's StockRoom (stock.acme.com)", or "StockRoom (...)" with no name set. */
+const place = (name: string, host: string) => `${name === "StockRoom" ? "StockRoom" : `${name}'s StockRoom`} (${host})`;
 
 export function resetEmail(name: string, host: string, person: string, url: string) {
   return {
-    subject: name === "Binwright" ? "Reset your Binwright password" : `Reset your password for ${name}`,
+    subject: name === "StockRoom" ? "Reset your StockRoom password" : `Reset your password for ${name}`,
     text: `Hi ${person},\n\nSomeone asked to reset the password for your account on ${place(name, host)}. Open this link to choose a new password. It works for 1 hour.\n\n${url}\n\nIf you did not ask for this, you can ignore this email. Your password stays the same.`,
     html: `<p>Hi ${escapeHtml(person)},</p><p>Someone asked to reset the password for your account on ${escapeHtml(place(name, host))}. The link works for 1 hour.</p>${emailButton(url, "Choose a new password")}<p>If you did not ask for this, you can ignore this email. Your password stays the same.</p>`,
   };
@@ -137,7 +137,7 @@ export function resetEmail(name: string, host: string, person: string, url: stri
 
 export function verifyEmail(name: string, host: string, person: string, url: string) {
   return {
-    subject: name === "Binwright" ? "Confirm your email for Binwright" : `Confirm your email for ${name}`,
+    subject: name === "StockRoom" ? "Confirm your email for StockRoom" : `Confirm your email for ${name}`,
     text: `Hi ${person},\n\nThanks for signing up to ${place(name, host)}. Open this link to confirm your email address. It works for 24 hours.\n\n${url}\n\nAfter that, an admin gives you access. If you did not sign up, you can ignore this email.`,
     html: `<p>Hi ${escapeHtml(person)},</p><p>Thanks for signing up to ${escapeHtml(place(name, host))}. The link works for 24 hours.</p>${emailButton(url, "Confirm your email address")}<p>After that, an admin gives you access. If you did not sign up, you can ignore this email.</p>`,
   };

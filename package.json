@@ -1,7 +1,7 @@
 {
-  "name": "binwright-lite",
-  "version": "1.1.0",
-  "description": "Binwright Lite: free, open-source stock and inventory for small businesses, on Cloudflare Workers.",
+  "name": "stockroom-lite",
+  "version": "1.2.0",
+  "description": "StockRoom Lite: free, open-source stock and inventory for small businesses, on Cloudflare Workers.",
   "license": "MIT",
   "private": true,
   "type": "module",

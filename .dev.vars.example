@@ -1,4 +1,4 @@
-# Secrets for Binwright. Copy this file to .dev.vars for local development (.dev.vars is never committed).
+# Secrets for StockRoom. Copy this file to .dev.vars for local development (.dev.vars is never committed).
 #
 # AUTH_SECRET signs sign-in sessions. Use a long random string of at least 32 characters.
 # The placeholder below only works on your own computer (localhost); the live app refuses to start with it.

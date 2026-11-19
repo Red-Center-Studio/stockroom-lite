@@ -4,7 +4,7 @@ import { item, location, user } from "../src/db/schema";
 import type { AppUser } from "../src/env";
 import type { Role } from "../src/labels";
 
-export const ORIGIN = "https://binwright.test";
+export const ORIGIN = "https://stockroom.test";
 export const db = () => getDb(env.DB);
 
 export async function makeUser(role: Role | null, name = `${role ?? "pending"} person`): Promise<AppUser> {
@@ -70,8 +70,8 @@ export class Browser {
   }
 
   async csrf(): Promise<string> {
-    if (!this.cookies.has("binwright_csrf")) await this.get("/login");
-    return this.cookies.get("binwright_csrf") ?? "";
+    if (!this.cookies.has("stockroom_csrf")) await this.get("/login");
+    return this.cookies.get("stockroom_csrf") ?? "";
   }
 
   async post(

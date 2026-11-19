@@ -1,4 +1,4 @@
-// Binwright client script. Everything works without it; this adds helpful touches:
+// StockRoom client script. Everything works without it; this adds helpful touches:
 // clear messages for network failures, double-submit protection, confirm prompts, printing and copying,
 // and showing only the fields that matter on the record form.
 (function () {

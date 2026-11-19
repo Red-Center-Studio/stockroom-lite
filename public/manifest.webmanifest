@@ -1,6 +1,6 @@
 {
-  "name": "Binwright",
-  "short_name": "Binwright",
+  "name": "StockRoom",
+  "short_name": "StockRoom",
   "description": "Stock and inventory for every place you keep it.",
   "start_url": "/dashboard",
   "display": "standalone",

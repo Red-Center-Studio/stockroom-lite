@@ -1,21 +1,21 @@
-# Binwright Lite
+# StockRoom Lite
 
 Free, open-source stock tracking for small businesses that keep stock in vans, storerooms, shelves and kits, running
 in your own Cloudflare account.
 
-[Live demo](https://binwright-demo.redcenterstudio.com) · [Get Pro](https://redcenterstudio.com/binwright/) ·
+[Live demo](https://stockroom-demo.redcenterstudio.com) · [Get Pro](https://redcenterstudio.com/stockroom/) ·
 [Docs](SETUP.md)
 
-The live demo runs Binwright Pro, so it also shows the Pro features listed below. Sign in with one of the demo
+The live demo runs StockRoom Pro, so it also shows the Pro features listed below. Sign in with one of the demo
 buttons; the data resets every night.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Red-Center-Studio/binwright-lite)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Red-Center-Studio/stockroom-lite)
 
-![The Binwright Lite home page: out of stock and low counts, and what needs ordering](docs/screenshots/binwright-lite-dashboard.jpg)
+![The StockRoom Lite home page: out of stock and low counts, and what needs ordering](docs/screenshots/stockroom-lite-dashboard.jpg)
 
 | Stock at every place                                                   | Recording use on a phone                                                           |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| ![Stock list with statuses](docs/screenshots/binwright-lite-stock.jpg) | ![Record stock form on a phone](docs/screenshots/binwright-lite-record-mobile.jpg) |
+| ![Stock list with statuses](docs/screenshots/stockroom-lite-stock.jpg) | ![Record stock form on a phone](docs/screenshots/stockroom-lite-record-mobile.jpg) |
 
 ## What Lite does
 
@@ -40,8 +40,8 @@ buttons; the data resets every night.
 
 ## What Pro adds
 
-Binwright Pro is $99 USD once for one business, with no monthly fee and no limit on users, items or places. See
-[redcenterstudio.com/binwright](https://redcenterstudio.com/binwright/).
+StockRoom Pro is $99 USD once for one business, with no monthly fee and no limit on users, items or places. See
+[redcenterstudio.com/stockroom](https://redcenterstudio.com/stockroom/).
 
 | Feature                                                                     | Lite         | Pro          |
 | --------------------------------------------------------------------------- | ------------ | ------------ |
@@ -96,10 +96,10 @@ npm run test:e2e     # browser tests with accessibility checks (uses Microsoft E
 
 ## Need it set up for you?
 
-The Turnkey Setup installs Binwright in your own Cloudflare account, with your business name, currency and units,
+The Turnkey Setup installs StockRoom in your own Cloudflare account, with your business name, currency and units,
 places, items and first team members loaded. $499 USD, paid once, usually done in 1 to 5 days.
-[Book the Turnkey Setup](https://redcenterstudio.com/start/?package=Turnkey%20Setup%20Sprint&for=binwright), or read
-more on the [Binwright page](https://redcenterstudio.com/binwright/).
+[Book the Turnkey Setup](https://redcenterstudio.com/start/?package=Turnkey%20Setup%20Sprint&for=stockroom), or read
+more on the [StockRoom page](https://redcenterstudio.com/stockroom/).
 
 ## Licence: MIT
 

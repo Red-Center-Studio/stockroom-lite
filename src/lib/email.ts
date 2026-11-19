@@ -13,13 +13,13 @@ export interface OutgoingEmail {
 /** True when Cloudflare Email Sending is set up (binding uncommented and MAIL_FROM filled in). */
 export const emailReady = (env: Bindings): boolean => Boolean(env.EMAIL && env.MAIL_FROM);
 
-/** The name emails come from: the business name, or "Binwright" until one is set. */
+/** The name emails come from: the business name, or "StockRoom" until one is set. */
 export function senderName(businessName: string | null | undefined): string {
   const name = (businessName ?? "")
     .replace(/[\r\n"<>]+/g, " ")
     .trim()
     .slice(0, 70);
-  return !name || name === "My Business" ? "Binwright" : name;
+  return !name || name === "My Business" ? "StockRoom" : name;
 }
 
 /** A link styled as a large button, for the main action in an email. */
@@ -33,7 +33,7 @@ export function wrapHtml(inner: string, businessName: string): string {
 <body style="margin:0;padding:0;background:#f4f6f8">
 <div style="max-width:560px;margin:0 auto;padding:24px 16px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;color:#0f172a">
 <div style="background:#ffffff;border-radius:12px;padding:24px">${inner}</div>
-<p style="margin:16px 4px 0;font-size:13px;color:#555">${escapeHtml(senderName(businessName))}, sent by Binwright</p>
+<p style="margin:16px 4px 0;font-size:13px;color:#555">${escapeHtml(senderName(businessName))}, sent by StockRoom</p>
 </div></body></html>`;
 }
 

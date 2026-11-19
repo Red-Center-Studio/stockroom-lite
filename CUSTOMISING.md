@@ -1,6 +1,6 @@
-# Customising Binwright Lite
+# Customising StockRoom Lite
 
-Binwright Lite is plain TypeScript on Cloudflare Workers: server-rendered pages (Hono with JSX), a D1 database (SQLite)
+StockRoom Lite is plain TypeScript on Cloudflare Workers: server-rendered pages (Hono with JSX), a D1 database (SQLite)
 through Drizzle, and one small client script. There is no build step beyond the CSS.
 
 ## Where things live

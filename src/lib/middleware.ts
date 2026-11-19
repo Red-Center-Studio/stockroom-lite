@@ -20,7 +20,7 @@ export const loadSettings: MiddlewareHandler<AppEnv> = async (c, next) => {
   await next();
 };
 
-const CSRF_COOKIE = "binwright_csrf";
+const CSRF_COOKIE = "stockroom_csrf";
 
 const isRole = (v: unknown): v is Role => typeof v === "string" && (ROLES as readonly string[]).includes(v);
 
@@ -47,7 +47,7 @@ export const base: MiddlewareHandler<AppEnv> = async (c, next) => {
 
 /** Loads the signed-in user (if any) from Better Auth, then re-reads the role from the database. */
 export const loadUser: MiddlewareHandler<AppEnv> = async (c, next) => {
-  const hasSessionCookie = /binwright.session_token=/.test(c.req.header("cookie") ?? "");
+  const hasSessionCookie = /stockroom.session_token=/.test(c.req.header("cookie") ?? "");
   if (hasSessionCookie) {
     const auth = createAuth(c.env, c.get("origin"));
     const result = await auth.api.getSession({ headers: c.req.raw.headers });
@@ -111,7 +111,7 @@ function timingSafeEqual(a: string, b: string): boolean {
 }
 
 function formExpiredPage(): string {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Form expired | Binwright</title><link rel="stylesheet" href="/styles.css"></head><body class="bg-gray-50 text-ink"><main class="mx-auto max-w-md p-6"><h1 class="text-xl font-semibold">This form has expired</h1><p class="mt-2">For your security, the page needs a refresh. Go back, reload the page and try again.</p><p class="mt-4"><a class="text-primary underline" href="/">Go to the start page</a></p></main></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Form expired | StockRoom</title><link rel="stylesheet" href="/styles.css"></head><body class="bg-gray-50 text-ink"><main class="mx-auto max-w-md p-6"><h1 class="text-xl font-semibold">This form has expired</h1><p class="mt-2">For your security, the page needs a refresh. Go back, reload the page and try again.</p><p class="mt-4"><a class="text-primary underline" href="/">Go to the start page</a></p></main></body></html>`;
 }
 
 /** Where a signed-in person lands, by role. */

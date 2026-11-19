@@ -9,12 +9,12 @@
  */
 import { hashPassword } from "../auth/password.ts";
 
-export const DEMO_PASSWORD = "binwright-lite-demo";
+export const DEMO_PASSWORD = "stockroom-lite-demo";
 
 export const DEMO_ACCOUNTS = [
-  { role: "admin", name: "Alex Morgan", email: "admin@demo.binwright.example" },
-  { role: "manager", name: "Sam Lee", email: "manager@demo.binwright.example" },
-  { role: "staff", name: "Jordan Taylor", email: "staff@demo.binwright.example" },
+  { role: "admin", name: "Alex Morgan", email: "admin@demo.stockroom.example" },
+  { role: "manager", name: "Sam Lee", email: "manager@demo.stockroom.example" },
+  { role: "staff", name: "Jordan Taylor", email: "staff@demo.stockroom.example" },
 ] as const;
 
 export interface Statement {
@@ -288,8 +288,8 @@ export async function demoStatements(now = new Date()): Promise<Statement[]> {
   // People. The extra staff member has no demo sign-in; they make the activity and team pages realistic.
   const people = [
     ...DEMO_ACCOUNTS.map((a) => ({ ...a, id: crypto.randomUUID(), demo: 1 })),
-    { role: "staff", name: "Priya Nair", email: "priya@demo.binwright.example", id: crypto.randomUUID(), demo: 0 },
-    { role: null, name: "Casey Brooks", email: "casey@demo.binwright.example", id: crypto.randomUUID(), demo: 0 },
+    { role: "staff", name: "Priya Nair", email: "priya@demo.stockroom.example", id: crypto.randomUUID(), demo: 0 },
+    { role: null, name: "Casey Brooks", email: "casey@demo.stockroom.example", id: crypto.randomUUID(), demo: 0 },
   ];
   const hash = await hashPassword(DEMO_PASSWORD);
   for (const p of people) {
@@ -420,7 +420,7 @@ export async function demoStatements(now = new Date()): Promise<Statement[]> {
     if (s.loc === "wh")
       mv(s, "receive", start, at(0, 15), {
         reference: "Opening stock",
-        note: "Stock on the shelves when Binwright was set up.",
+        note: "Stock on the shelves when StockRoom was set up.",
         unitCost: itemDef(s.item).cost,
       });
     else mv(s, "count", start, at(0, 16), { note: "Opening count" });
